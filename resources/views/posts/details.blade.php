@@ -1,12 +1,12 @@
 @extends('layouts.app')
-<title>{{ $post->user->blog_title }}</title>
+<title>{{ $post->title }}</title>
 @section('content')
     <div class="container">
         <div class="card mb-3">
             <div class="card-header bg-dark text-info">
                 <div class="row">
                     <div class="col-1">
-                        <img src="{{ asset('/images/' . $author->img) }}" style="max-width: 100px; border-radius: 50%;" class="rounded" alt="...">
+                        <img src="{{ asset('/images/' . $author->img) }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="Profile picture">
                     </div>
                     <div class="col-11">
                         <h1 class="display-2" style="margin-left: 10px">{{ $author->name }}</h1>

@@ -57,7 +57,7 @@
                       </button>
                       <ul class="dropdown-menu bg-dark hover-dark">
                         <li><a class="dropdown-item" id="link" href="{{ route('new_post') }}">{{ __('New post') }}</a></li>
-                        <li><a class="dropdown-item" id="link" href="#">{{ __('Settings') }}</a></li>
+                        <li><a class="dropdown-item" id="link" href="{{ route('settings') }}">{{ __('Settings') }}</a></li>
                         @auth
                               @if(Auth::user()->type == 'admin')
                                   <li><a class="dropdown-item" id="link" href="{{ route('users_list') }}">Admin panel</a></li>
