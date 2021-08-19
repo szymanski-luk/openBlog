@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +17,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        $faker = Faker::create();
+
+//        foreach (range(1,10) as $index) {
+//            User::create([
+//                'name' => $faker->name,
+//                'password' => $faker->password,
+//                'email' => $faker->email,
+//                'description' => $faker->realText(70),
+//                'blog_title' => $faker->company(),
+//                'blog_description' => $faker->realText(90)
+//            ]);
+//        }
+
+        foreach (range(1,10) as $index) {
+            Post::create([
+                'title' => $faker->sentence,
+                'content' => $faker->realText(2500),
+                'category_id' => $index,
+                'user_id' => $index+1
+            ]);
+        }
     }
 }

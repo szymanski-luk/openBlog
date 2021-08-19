@@ -24,7 +24,7 @@
                                     <div class="card-footer">
                                         <div class="row">
                                             <div class="col-6">
-                                                <p class="card-text"><small class="text-muted">Category: <a href="#">{{ $post->category->title }}</a></small></p>
+                                                <p class="card-text"><small class="text-muted">Category: <a href="{{ route('posts_in_category', ['id' => $post->category->id]) }}">{{ $post->category->title }}</a></small></p>
                                             </div>
                                             <div class="col-6" style="text-align: right">
                                                 <p class="card-text"><small class="text-muted">Author: <a href="{{ route('blog', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a></small></p>
@@ -35,6 +35,9 @@
 
                             </div>
                         @endforeach
+                            <div class="d-flex justify-content-center">
+                                {!! $posts->links() !!}
+                            </div>
                     @else
                         <div class="row">
                             <img src="{{ asset('images/' . 'oops.png') }}" style="max-width: 300px; margin-left: auto; margin-right: auto" alt="Oops">

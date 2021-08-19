@@ -1,17 +1,37 @@
 @extends('layouts.app')
-
+<title>{{ $author->blog_title }}</title>
 @section('content')
     <div class="container">
-        <h1 class="display-1">{{ $posts[0]->user->name }}</h1>
-
         <div class="card mb-3">
             <div class="card-header bg-dark text-info">
-                <img src="{{ asset('/images/' . $author->img) }}" class="rounded" alt="...">
-                <h1 class="display-6">{{ $posts[0]->user->name }}</h1>
+                <div class="row">
+                    <div class="col-1">
+                        <img src="{{ asset('/images/' . $author->img) }}" style="max-width: 100px; border-radius: 50%;" class="rounded" alt="...">
+                    </div>
+                    <div class="col-11">
+                        <h1 class="display-2" style="margin-left: 10px">{{ $author->name }}</h1>
+                    </div>
+                    <div class="col-12" style="text-align: right">
+                        <h1 class="display-6"> <i>{{ $author->blog_title }}</i></h1>
+                    </div>
+                </div>
+
             </div>
 
             <div class="card-body">
-                <p class="card-text">dgfhdfghfgd</p>
+                <div class="row">
+                    <h1 class="display-5" style="text-align: center">About</h1>
+                    <div class="col-6 border-end">
+                        <h1 class="display-6" style="text-align: right">me</h1>
+                        <p class="card-text" style="text-align: right">{{ $author->description }}</p>
+                    </div>
+                    <div class="col-6">
+                        <h1 class="display-6">blog</h1>
+                        <p class="card-text">{{ $author->blog_description }}</p>
+                    </div>
+
+                </div>
+
 
             </div>
 
@@ -38,7 +58,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
-                                <p class="card-text"><small class="text-muted">Category: <a href="#">{{ $post->category->title }}</a></small></p>
+                                <p class="card-text"><small class="text-muted">Category: <a href="{{ route('posts_in_category', ['id' => $post->category->id]) }}">{{ $post->category->title }}</a></small></p>
                             </div>
                             <div class="col-6" style="text-align: right">
                                 <p class="card-text"><small class="text-muted">Author: <a href="#">{{ $post->user->name }}</a></small></p>
@@ -49,6 +69,9 @@
 
                 </div>
             @endforeach
+                <div class="d-flex justify-content-center">
+                    {!! $posts->links() !!}
+                </div>
         </div>
     </div>
 @endsection

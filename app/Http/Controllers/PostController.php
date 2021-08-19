@@ -71,17 +71,22 @@ class PostController extends Controller
 
     public function list()
     {
-        $posts = Post::all();
+        $posts = Post::query()
+            ->orderByDesc('id')
+            ->paginate(5);
+
+        $allPosts = Post::all();
+
         $categories = Category::all();
-        return view('posts.list', ['posts' => $posts, 'categories' => $categories]);
+        return view('posts.list', ['posts' => $posts, 'categories' => $categories, 'allPosts' => $allPosts]);
     }
 
     public function usersPosts($id)
     {
         $posts = Post::query()
             ->where('user_id', '=', $id)
-            ->get()
-            ->all();
+            ->orderByDesc('id')
+            ->paginate(5);
 
         $author = User::query()
             ->where('id', '=', $id)
@@ -94,8 +99,8 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->where('category_id', '=', $id)
-            ->get()
-            ->all();
+            ->orderByDesc('id')
+            ->paginate(5);
 
         $categories = Category::all();
 

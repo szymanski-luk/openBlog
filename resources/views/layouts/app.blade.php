@@ -34,7 +34,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __('My blog') }}</a>
+                                <a class="nav-link" href="{{ route('blog', ['id' => Auth::user()->id]) }}">{{ __('My blog') }}</a>
                             </li>
                         @endauth
 

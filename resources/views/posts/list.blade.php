@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>Latest posts</title>
 @section('content')
     <div class="container">
         <div class="container">
@@ -23,7 +23,7 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-6">
-                                            <p class="card-text"><small class="text-muted">Category: <a href="#">{{ $post->category->title }}</a></small></p>
+                                            <p class="card-text"><small class="text-muted">Category: <a href="{{ route('posts_in_category', ['id' => $post->category->id]) }}">{{ $post->category->title }}</a></small></p>
                                         </div>
                                         <div class="col-6" style="text-align: right">
                                             <p class="card-text"><small class="text-muted">Author: <a href="{{ route('blog', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a></small></p>
@@ -31,9 +31,11 @@
                                     </div>
                                 </div>
                             </a>
-
                         </div>
                     @endforeach
+                        <div class="d-flex justify-content-center">
+                            {!! $posts->links() !!}
+                        </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-12">
@@ -43,7 +45,7 @@
                                 <div class="card-body">
                                     <ul>
                                         @foreach($categories as $category)
-                                        <li><a href="{{ route('posts_in_category', ['id' => $category->id]) }}">{{ $category->title }} ({{ $posts->where('category_id', '=', $category->id)->count() }})</a></li>
+                                        <li><a href="{{ route('posts_in_category', ['id' => $category->id]) }}">{{ $category->title }} ({{ $allPosts->where('category_id', '=', $category->id)->count() }})</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -52,6 +54,9 @@
                 </div>
             </div>
 
+
         </div>
+
+
     </div>
 @endsection
