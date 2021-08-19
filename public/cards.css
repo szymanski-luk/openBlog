@@ -1,0 +1,15 @@
+#post-card:hover {
+    background-color: rgba(13, 202, 240, 0.2);
+    color: rgb(1, 47, 108);
+}
+
+#post-card {
+    transition: color .7s;
+    color: rgb(0, 0, 0);
+    transition: background-color .7s;
+
+}
+
+#a-blue {
+    color: rgba(13, 202, 240)
+}

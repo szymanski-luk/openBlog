@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,11 @@ use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['list', 'usersPosts', 'postsInCategory']);
+    }
+
     public function newPost()
     {
         $categories = Category::all();
@@ -61,5 +67,40 @@ class PostController extends Controller
 
         return redirect()->route('home');
 
+    }
+
+    public function list()
+    {
+        $posts = Post::all();
+        $categories = Category::all();
+        return view('posts.list', ['posts' => $posts, 'categories' => $categories]);
+    }
+
+    public function usersPosts($id)
+    {
+        $posts = Post::query()
+            ->where('user_id', '=', $id)
+            ->get()
+            ->all();
+
+        $author = User::query()
+            ->where('id', '=', $id)
+            ->first();
+
+        return view('posts.own', ['posts' => $posts, 'author' => $author]);
+    }
+
+    public function postsInCategory($id)
+    {
+        $posts = Post::query()
+            ->where('category_id', '=', $id)
+            ->get()
+            ->all();
+
+        $categories = Category::all();
+
+        $allPosts = Post::all();
+
+        return view('posts.in_category', ['posts' => $posts, 'categories' => $categories, 'allPosts' => $allPosts, 'catId' => $id]);
     }
 }

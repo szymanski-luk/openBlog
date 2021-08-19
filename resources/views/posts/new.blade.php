@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <h5 class="card-header bg-dark text-info">New post</h5>
+            <h1 class="card-header bg-dark text-info display-6">New post</h1>
             <form method="POST" action="{{ route('create_post') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
