@@ -3,13 +3,25 @@
 @section('content')
     <div class="container">
         <div class="container">
-            <div class="row">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-info">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="display-2" style="margin-left: 10px">{{ $categories->where('id', '=', $catId)->first()->title }}</h1>
+                        </div>
+                        <div class="col-12" style="text-align: right">
+                            <h1 class="display-6"> <i>{{ $categories->where('id', '=', $catId)->first()->description }}</i></h1>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row mt-2" >
                 <div class="col-lg-9 col-sm-12">
                     @if(count($posts) > 0)
                         @foreach($posts as $post)
                             <div class="card mb-3">
                                 <div class="card-header bg-dark text-info"><h1 class="display-6">{{ substr($post->title, 0, 42) }}...</h1></div>
-                                <a href="#" id="post-card" style="text-decoration-line: none">
+                                <a href="{{ route('post_detailed', ['id' => $post->id]) }}" id="post-card" style="text-decoration-line: none">
                                     <div class="row">
                                         <div class="col-4">
                                             <img src="{{ asset('/images/' . $post->img) }}" style="max-width: 500px; margin-left: 10px; margin-top: 10px" class="card-img-top" alt="...">

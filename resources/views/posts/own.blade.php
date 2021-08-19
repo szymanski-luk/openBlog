@@ -15,7 +15,6 @@
                         <h1 class="display-6"> <i>{{ $author->blog_title }}</i></h1>
                     </div>
                 </div>
-
             </div>
 
             <div class="card-body">
@@ -41,7 +40,7 @@
             @foreach($posts as $post)
                 <div class="card mb-3">
                     <div class="card-header bg-dark text-info"><h1 class="display-6">{{ $post->title }}</h1></div>
-                    <a href="#" id="post-card" style="text-decoration-line: none">
+                    <a href="{{ route('post_detailed', ['id' => $post->id]) }}" id="post-card" style="text-decoration-line: none">
                     <div class="row">
                         <div class="col-4">
                             <img src="{{ asset('/images/' . $post->img) }}" style="max-width: 500px; margin-left: 10px; margin-top: 10px" class="card-img-top" alt="...">

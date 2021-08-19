@@ -28,6 +28,8 @@ Route::get('/posts/new', [PostController::class, 'newPost'])->name('new_post');
 Route::post('/posts/create', [PostController::class, 'createPost'])->name('create_post');
 Route::get('/posts', [PostController::class, 'list'])->name('posts');
 Route::get('/posts/category/{id}', [PostController::class, 'postsInCategory'])->name('posts_in_category');
+Route::get('/posts/{id}', [PostController::class, 'details'])->name('post_detailed');
+Route::post('/posts/edit', [PostController::class, 'editPost'])->name('edit_post');
 
 // BLOG
 Route::get('/blog/{id}', [PostController::class, 'usersPosts'])->name('blog');
