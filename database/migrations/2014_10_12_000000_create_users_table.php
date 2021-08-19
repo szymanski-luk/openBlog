@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->text('description');
+            $table->text('description')->default('My description');
             $table->string('img')->default('personal_image.jpg');
             $table->string('blog_title')->default('My personal blog');
             $table->text('blog_description')->default('Blog description');
