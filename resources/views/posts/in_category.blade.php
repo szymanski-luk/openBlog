@@ -10,7 +10,7 @@
                             <h1 class="display-2" style="margin-left: 10px">{{ $categories->where('id', '=', $catId)->first()->title }}</h1>
                         </div>
                         <div class="col-12" style="text-align: right">
-                            <h1 class="display-6"> <i>{{ $categories->where('id', '=', $catId)->first()->description }}</i></h1>
+                            <h1 class="display-6" style="color: white"> <i>{{ $categories->where('id', '=', $catId)->first()->description }}</i></h1>
                         </div>
                     </div>
                 </div>

@@ -31,13 +31,13 @@ class DatabaseSeeder extends Seeder
 //            ]);
 //        }
 
-        foreach (range(1,10) as $index) {
-            Post::create([
-                'title' => $faker->sentence,
-                'content' => $faker->realText(2500),
-                'category_id' => $index,
-                'user_id' => $index+1
-            ]);
-        }
+//        foreach (range(1,10) as $index) {
+//            Post::create([
+//                'title' => $faker->sentence,
+//                'content' => $faker->realText(2500),
+//                'category_id' => $index,
+//                'user_id' => $index+1
+//            ]);
+//        }
     }
 }

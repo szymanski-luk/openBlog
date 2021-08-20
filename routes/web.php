@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +40,9 @@ Route::get('/blog/{id}', [PostController::class, 'usersPosts'])->name('blog');
 // SETTINGS
 Route::get('/settings', [HomeController::class, 'settings'])->name('settings');
 Route::post('/settings/save', [HomeController::class, 'saveSettings'])->name('save_settings');
+
+// COMMENTS
+Route::post('/comment/add', [CommentController::class, 'createComment'])->name('create_comment');
+
+// REPLIES
+Route::post('/reply/add', [ReplyController::class, 'createReply'])->name('create_reply');

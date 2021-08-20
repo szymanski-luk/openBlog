@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -15,7 +17,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['list', 'usersPosts', 'postsInCategory']);
+        $this->middleware('auth')->except(['list', 'usersPosts', 'postsInCategory', 'details']);
     }
 
     public function newPost()
@@ -111,9 +113,19 @@ class PostController extends Controller
             ->where('id', '=', $post->user_id)
             ->first();
 
+        $comments = Comment::query()
+                            ->where('post_id', '=', $id)
+                            ->get()
+                            ->all();
+
+        $replies = Reply::query()
+                        ->where('post_id', '=', $id)
+                        ->get()
+                        ->all();
+
         $categories = Category::all();
 
-        return view('posts.details', ['post' => $post, 'author' => $author, 'categories' => $categories]);
+        return view('posts.details', ['post' => $post, 'author' => $author, 'categories' => $categories, 'comments' => $comments, 'replies' => $replies]);
     }
 
     public function editPost(Request $request)

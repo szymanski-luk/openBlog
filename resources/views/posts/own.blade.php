@@ -5,14 +5,14 @@
         <div class="card mb-3">
             <div class="card-header bg-dark text-info">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-lg-1 col-md-1 col-sm-3">
                         <img src="{{ asset('/images/' . $author->img) }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="Profile picture">
                     </div>
-                    <div class="col-11">
+                    <div class="col-lg-11 col-md-11 col-sm-1">
                         <h1 class="display-2" style="margin-left: 10px">{{ $author->name }}</h1>
                     </div>
                     <div class="col-12" style="text-align: right">
-                        <h1 class="display-6"> <i>{{ $author->blog_title }}</i></h1>
+                        <h1 class="display-6" style="color: white"> <i>{{ $author->blog_title }}</i></h1>
                     </div>
                 </div>
             </div>
