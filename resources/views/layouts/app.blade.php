@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="link">
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('blog', ['id' => Auth::user()->id]) }}">{{ __('My blog') }}</a>
@@ -37,7 +37,7 @@
                         @endauth
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Users') }}</a>
+                            <a class="nav-link" href="{{ route('users') }}">{{ __('Users') }}</a>
                         </li>
 
 

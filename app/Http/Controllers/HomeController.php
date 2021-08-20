@@ -72,4 +72,27 @@ class HomeController extends Controller
 
         return redirect()->route('settings');
     }
+
+    public function usersList()
+    {
+        $users = User::query()
+                ->paginate(10);
+
+        return view('user.list', ['users' => $users]);
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->search;
+
+        $users = User::query()
+                ->where('name', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('blog_title', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('blog_description', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('description', 'LIKE', "%{$searchTerm}%")
+                ->paginate(10);
+
+        return view('user.list', ['users' => $users]);
+    }
+
 }

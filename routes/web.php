@@ -46,3 +46,7 @@ Route::post('/comment/add', [CommentController::class, 'createComment'])->name('
 
 // REPLIES
 Route::post('/reply/add', [ReplyController::class, 'createReply'])->name('create_reply');
+
+// USERS
+Route::get('/users', [HomeController::class, 'usersList'])->name('users');
+Route::get('/users/for', [HomeController::class, 'search'])->name('search');

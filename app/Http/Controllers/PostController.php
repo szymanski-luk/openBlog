@@ -109,6 +109,8 @@ class PostController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $post->content = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $post->content);
+
         $author = User::query()
             ->where('id', '=', $post->user_id)
             ->first();

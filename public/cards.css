@@ -7,9 +7,28 @@
     transition: color .7s;
     color: rgb(0, 0, 0);
     transition: background-color .7s;
-
 }
 
 #a-blue {
-    color: rgba(13, 202, 240)
+    color: rgb(13, 202, 240);
+}
+
+#user-card {
+    transition: background-color .4s;
+    background-color: white;
+}
+
+#user-card:hover {
+    background-color: rgb(101, 101, 101);
+    color: rgb(1, 47, 108);
+}
+
+#link:hover {
+    background-color: rgb(37, 42, 47);
+    color: rgb(220, 53, 69);
+}
+
+#link {
+    transition: color .6s;
+    transition: background-color .4s;
 }

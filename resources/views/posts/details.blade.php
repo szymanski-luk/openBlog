@@ -6,7 +6,7 @@
             <div class="card-header bg-dark text-info">
                 <div class="row">
                     <div class="col-lg-1 col-md-1 col-sm-3">
-                        <img src="{{ asset('/images/' . $author->img) }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="Profile picture">
+                        <img src="{{ asset('/images/' . $author->img) }}" style="height: 100px; width: 100px; border-radius: 50%; object-fit:cover" alt="Profile picture">
                     </div>
                     <div class="col-lg-11 col-md-11 col-sm-1">
                         <h1 class="display-2" style="margin-left: 10px">{{ $author->name }}</h1>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body">
-                                <p class="card-text">{!! nl2br(e($post->content)) !!}</p>
+                                <p class="card-text">{!! nl2br($post->content) !!}</p>
                                 <p class="card-text"><small class="text-muted">Last updated {{ $post->updated_at }}</small></p>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="col-4 border-end">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-4">
-                                        <img src="{{ asset('/images/' . $comment->user->img) }}" style="height: 55px; width: 55px; border-radius: 50%;" alt="Profile picture">
+                                        <img src="{{ asset('/images/' . $comment->user->img) }}" style="height: 55px; width: 55px; border-radius: 50%; object-fit:cover" alt="Profile picture">
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 ">
                                         <a href="{{ route('blog', ['id' => $comment->user->id]) }}" style="text-decoration-line: none"><h5>{{ $comment->user->name }}</a></h5>
@@ -129,7 +129,7 @@
                                                     <div class="col-4 border-end">
                                                         <div class="row">
                                                             <div class="col-lg-2 col-md-2 col-sm-4">
-                                                                <img src="{{ asset('/images/' . $reply->user->img) }}" style="height: 55px; width: 55px; border-radius: 50%;" alt="Profile picture">
+                                                                <img src="{{ asset('/images/' . $reply->user->img) }}" style="height: 55px; width: 55px; border-radius: 50%; object-fit:cover" alt="Profile picture">
                                                             </div>
                                                             <div class="col-lg-10 col-md-10 col-sm-8 ">
                                                                 <a href="{{ route('blog', ['id' => $reply->user->id]) }}" style="text-decoration-line: none"><h5>{{ $reply->user->name }}</a></h5>
